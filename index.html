@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Spectre Web</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="theme-color" content="#000000">
+        <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="plugins/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="css/spectre-base.css" media="screen">
+        <link rel="stylesheet" href="css/spectre-web.css" media="screen">
+        <script defer src="plugins/jquery/jquery.min.js"></script>
+        <style>
+            html, body {
+                background-color: #000000 !important;
+                color: #e0e0e0 !important;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
+            section {
+                background-color: #000000 !important;
+            }
+            .container {
+                background-color: #000000 !important;
+            }
+            .box {
+                background-color: #121212 !important;
+                border: 1px solid #222222;
+                border-radius: 4px;
+                padding: 20px;
+                margin-top: 40px;
+            }
+            input, select {
+                background-color: #1a1a1a !important;
+                color: #ffffff !important;
+                border: 1px solid #333333 !important;
+                border-radius: 4px;
+                padding: 6px 10px;
+            }
+            input:focus, select:focus {
+                background-color: #222222 !important;
+                color: #ffffff !important;
+                border-color: #555555 !important;
+                outline: none;
+                box-shadow: none !important;
+            }
+            hr {
+                border-top: 1px solid #222222 !important;
+            }
+            button, .btn {
+                background-color: #222222 !important;
+                border-color: #333333 !important;
+                color: #ffffff !important;
+                border-radius: 4px;
+            }
+            button:hover, .btn:hover {
+                background-color: #333333 !important;
+                border-color: #444444 !important;
+            }
+            #site input[type="radio"],
+            #site p:has(input[type="radio"]) {
+                display: none !important;
+            }
+            #siteResult button {
+                background-color: #1a1a1a !important;
+                border: 1px solid #333333 !important;
+                padding: 10px;
+                width: 100%;
+            }
+            #siteResult input.code {
+                background: transparent !important;
+                border: none !important;
+                color: #ffffff !important;
+                text-align: center;
+                font-size: 1.2rem;
+                width: 100%;
+            }
+            .caption {
+                display: none !important;
+            }
+            .fa-duotone, .fa-galaxy, .fa-spin {
+                display: none !important;
+            }
+        </style>
+    </head>
+
+    <body>
+        <section id="application">
+            <div id="user" class="container" data-active="true">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 text-center box">
+                        <hr>
+                        <form>
+                            <p>
+                                <label id="userName">
+                                    Your Salt
+                                    <input type="text" placeholder="eg. Donald Yahu" autocomplete="username">
+                                </label>
+                            </p>
+
+                            <p>
+                                <label id="userSecret">
+                                    Your Secret
+                                    <input type="password" placeholder="eg. Yahu Likes Trump" autocomplete="current-password">
+                                </label>
+                            </p>
+
+                            <div style="display: none;">
+                                <label id="algorithmVersion">
+                                    Algorithm Version
+                                    <select>
+                                        <option value="3" selected>V3 (2015:01)</option>
+                                    </select>
+                                </label>
+                            </div>
+
+                            <hr>
+    
+                            <p class="info"></p>
+                            <p class="error"></p>
+    
+                            <p>
+                                <button type="submit" id="signin">
+                                    Sign In
+                                </button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="site" class="container" data-active="false">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 text-center box">
+                        <hr>
+                        <form>
+                            <p>
+                                <label id="siteName">
+                                    Password Name or Site Domain
+                                    <input type="text" placeholder="eg. donaldahu.com">
+                                </label>
+                            </p>
+    
+                            <div class="row justify-content-center">
+                                <div class="col-lg-6">
+                                    <p>
+                                        <label id="siteCounter">
+                                            Password Number
+                                            <input type="number" placeholder="1" min="1" max="100" value="1" class="half" />
+                                        </label>
+                                    </p>
+                                </div>
+        
+                                <div class="col-lg-6">
+                                    <p>
+                                        <label id="siteType">
+                                            Password Type
+                                            <select></select>
+                                        </label>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <p>
+                                <input type="radio" name="sitePurpose" id="sitePurposePassword" value="com.lyndir.masterpassword">
+                                <label for="sitePurposePassword">Site Password</label>
+                                <input type="radio" name="sitePurpose" id="sitePurposeLogin" value="com.lyndir.masterpassword.login">
+                                <label for="sitePurposeLogin">Site Login Name</label>
+                                <input type="radio" name="sitePurpose" id="sitePurposeAnswer" value="com.lyndir.masterpassword.answer">
+                                <label for="sitePurposeAnswer">Site Security Answer</label>
+                            </p>
+    
+                            <p>
+                                <label id="siteResult">
+                                    Result
+                                    <button type="button" id="copyBtn">
+                                        <input class="code" id="generatedPassword" readonly="">
+                                    </button>
+                                </label>
+                            </p>
+                        </form>
+
+                        <p class="info"></p>
+                        <p class="error"></p>
+
+                        <hr>
+
+                        <p>
+                            <button type="submit" id="signout">
+                                Sign Out
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scripts -->
+        <script defer src="plugins/bootstrap/bootstrap.bundle.min.js"></script>
+        <script defer src="js/spectre/spectre-types.js"></script>
+        <script defer src="js/spectre/spectre-service.js"></script>
+        <script defer src="js/main.js"></script>
+        <script>
+            document.getElementById('copyBtn').addEventListener('click', function() {
+                const passwordInput = document.getElementById('generatedPassword');
+                const password = passwordInput.value;
+
+                if (!password) return;
+
+                navigator.clipboard.writeText(password).then(function() {
+                    passwordInput.value = "Copied!";
+                    setTimeout(function() {
+                        passwordInput.value = password;
+                    }, 1200);
+                }).catch(function(err) {
+                    passwordInput.select();
+                    document.execCommand('copy');
+                    
+                    passwordInput.value = "Copied!";
+                    setTimeout(function() {
+                        passwordInput.value = password;
+                    }, 1200);
+                });
+            });
+        </script>
+    </body>
+</html>
